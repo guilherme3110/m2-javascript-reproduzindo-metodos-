@@ -14,28 +14,15 @@ function newMap(elemento, callback) {
 console.log(newMap(arrNumbers, callbackMap))
 
 
-
-
-let arrNumber = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-function callbackFilter(elemento){
-  if(elemento >= 11){
-    return elemento
-  }else{
-
-  }
-}
-
-
-function newFilter(number, callback) {
+function newFilter(array, callback) {
     const output = []
-    for(let i = 0; i < number.length; i++){
-      output.push(callback[i])
+    for(let i = 0; i < array.length; i++){
+        if(callback(array[i])){
+          output.push(array[i])
+        }
     }
        return output
 }
-
-console.log(newFilter(arrNumber, callbackFilter))
-
 
 function newFind(arrNumbers, callback) {
     for(let i = 0; i < arrNumbers.length; i++){
@@ -46,28 +33,18 @@ function newFind(arrNumbers, callback) {
     return undefined
 }
 
-
-function callbackReduce(acumulador, valorAtual){
-  return valorAtual + acumulador
-}
-
 function newReduce(array, callback, valorInicial) {
-  let count = valorInicial
+  let count = 0;
+  if( valorInicial != undefined){
+    count = valorInicial
+  }
 
   for(let i = 0; i <array.length; i++){
     count = callback(count, array[i])
-  }
+    }
   return count
   
 }
-
-console.log(newReduce(arrNumbers,callbackReduce,0))
-
-
-
-
-
-
 // Não alterar o código abaixo
 
 export {
